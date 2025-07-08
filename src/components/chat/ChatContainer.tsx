@@ -3,7 +3,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import { ChatBubble } from './ChatBubble';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
-import { Send, Bot, User, Sparkles, MessageCircle, HelpCircle, Coffee } from 'lucide-react';
+import { Send, Bot, User, Sparkles, MessageCircle, HelpCircle, Coffee, Lightbulb } from 'lucide-react';
 import { ScrollArea } from '@/components/ui/scroll-area';
 
 interface Message {
@@ -113,22 +113,39 @@ export const ChatContainer: React.FC = () => {
     }
   };
 
+  const toggleExamples = () => {
+    setShowExamples(!showExamples);
+  };
+
   return (
     <div className="flex flex-col h-[700px] max-w-lg mx-auto bg-white rounded-3xl shadow-2xl border border-gray-100 overflow-hidden backdrop-blur-sm">
       {/* Header */}
       <div className="bg-gradient-to-r from-purple-600 via-purple-500 to-blue-500 p-6 text-white relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-r from-purple-600/20 to-blue-500/20 backdrop-blur-sm"></div>
-        <div className="relative flex items-center gap-4">
-          <div className="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center backdrop-blur-sm border border-white/30">
-            <Bot className="w-6 h-6" />
-          </div>
-          <div>
-            <h3 className="font-bold text-lg">Website Asistanı</h3>
-            <div className="flex items-center gap-2">
-              <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
-              <p className="text-sm text-white/90">Çevrimiçi</p>
+        <div className="relative flex items-center justify-between">
+          <div className="flex items-center gap-4">
+            <div className="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center backdrop-blur-sm border border-white/30">
+              <Bot className="w-6 h-6" />
+            </div>
+            <div>
+              <h3 className="font-bold text-lg">Website Asistanı</h3>
+              <div className="flex items-center gap-2">
+                <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
+                <p className="text-sm text-white/90">Çevrimiçi</p>
+              </div>
             </div>
           </div>
+          
+          {/* Örnek Sorular Butonu */}
+          <Button
+            onClick={toggleExamples}
+            variant="ghost"
+            size="sm"
+            className="text-white hover:bg-white/20 transition-colors rounded-full px-3 py-2"
+          >
+            <Lightbulb className="w-4 h-4 mr-2" />
+            Örnek Sorular
+          </Button>
         </div>
       </div>
 
